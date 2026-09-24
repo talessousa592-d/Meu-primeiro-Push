@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contato - Lojas Americanas</title>
+</head>
+<body>
+
+    <!-- Cabeçalho Principal -->
+    <h1>Fale Conosco - Lojas Americanas</h1>
+    <p>Entre em contato com a nossa equipe através dos canais abaixo.</p>
+
+    <hr>
+
+    <!-- Seção de Canais de Atendimento -->
+    <h2>Nossos Canais</h2>
+    
+    <address>
+        <ul>
+            <li><strong>Telefone:</strong> <a href="tel:+558598187-1807">(85) 98187-1807</a></li>
+            <li><strong>E-mail:</strong> <a href="mailto:contato@americanas.com">contato@americanas.com</a></li>
+            <li><strong>Endereço:</strong> Av. Francisco Sá, 1030 - Centro, Fortaleza - CE</li>
+            <li><strong>Horário de Funcionamento:</strong> Segunda a Sexta, das 08h às 18h</li>
+        </ul>
+    </address>
+
+    <hr>
+
+    <!-- Contatos por Setor usando Tabela -->
+    <h2>Atendimento por Setor</h2>
+
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Setor</th>
+            <th>E-mail</th>
+            <th>Ramal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align: center;">
+                <img src="americanas.png" alt="Suporte Técnico" width="80" height="80"><br>
+                Suporte Técnico
+            </td>
+            <td style="text-align: center;">
+                
+                <a href="mailto:suporte@americanas.com">suporte@americanas.com</a>
+            </td>
+            <td style="text-align: center;">
+                101
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <img src="bolsa.png" alt="Vendas / Comercial" width="80" height="80"><br>
+                Vendas / Comercial
+            </td>
+            <td style="text-align: center;">
+                
+                <a href="mailto:vendas@americanas.com">vendas@americanas.com</a>
+            </td>
+            <td style="text-align: center;">
+                102
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">
+                <img src="dolar.png" alt="Financeiro" width="80" height="80"><br>
+                Financeiro
+            </td>
+            <td style="text-align: center;">
+             
+                <a href="mailto:financeiro@americanas.com">financeiro@americanas.com</a>
+            </td>
+            <td style="text-align: center;">
+                
+                103
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+    <!-- Formulário de Mensagem -->
+    <h2>Envie uma Resenha</h2>
+
+    <form action="/enviar-contato" method="post">
+        <p>
+            <label for="nome">Nome completo:</label><br>
+            <input type="text" id="nome" name="nome" required>
+        </p>
+
+        <p>
+            <label for="email">E-mail:</label><br>
+            <input type="email" id="email" name="email" required>
+        </p>
+
+        <p>
+            <label for="assunto">Assunto:</label><br>
+            <select id="assunto" name="assunto">
+                <option value="duvida">Dúvidas</option>
+                <option value="orcamento">Orçamento</option>
+                <option value="suporte">Suporte</option>
+                <option value="outro">Outro</option>
+            </select>
+        </p>
+
+</p>
+
+<p>
+    <label for="resenha">Faça sua resenha:</label><br>
+    <textarea id="resenha" name="resenha" rows="5" cols="40"></textarea>
+</p>
+
+<p>
+    <button type="submit">Enviar Resenha</button>
+    <button type="reset">Limpar Resenha</button>
+</p>
+
+<p>
+    <button><a href="index.html">voltar</a></button>
+</body>
+</html>
