@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfumaria - Lojas Americanas</title>
+    <style>
+        /* Configurações gerais */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #e60014;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 16px;
+        }
+
+        /* Menu de navegação */
+        nav {
+            background-color: #ffffff;
+            border-bottom: 3px solid #e60014;
+            padding: 12px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #e60014;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid #1769aa;
+            outline-offset: 3px;
+        }
+
+        /* Área principal */
+        main {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .secao-titulo {
+            color: #e60014;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        /* Grade de Produtos */
+        .produtos {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .produto {
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background-color: #ffffff;
+            transition: border-color 0.2s;
+        }
+
+        .produto:hover {
+            border-color: #e60014;
+        }
+
+        .produto img {
+            width: 100%;
+            max-width: 180px;
+            height: 160px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .produto h3 {
+            color: #333333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .descricao {
+            color: #666666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .preco {
+            color: #e60014;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .produto button {
+            width: 100%;
+            padding: 12px;
+            background-color: #e60014;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .produto button:hover {
+            background-color: #b80010;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #e60014;
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #ffffff;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 750px) {
+            .produtos {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 25px;
+            }
+
+            .produtos {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                padding: 0 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Lojas Americanas</h1>
+        <p>Seção Especial de Perfumaria</p>
+    </header>
+
+    <!-- Menu de navegação -->
+    <nav aria-label="Menu principal">
+        <ul>
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Produtos</a></li>
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main>
+        <h2 class="secao-titulo">Perfumaria em Destaque</h2>
+
+        <section class="produtos">
+            
+            <!-- Produto 1 -->
+            <article class="produto">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2S46HTGFyC3jUCoe6CoHdOKnEdW_T_5OWmmqkB7JGtVeakkdC2vLs3-zR&s=10" alt="Frasco elegante de perfume Bleu de Chanel">
+                <h3>Perfume Bleu de Chanel</h3>
+                <p class="descricao">Fragrância sofisticada para o seu dia a dia.</p>
+                <p class="preco">R$ 49,90</p>
+                <button type="button">Adicionar ao carrinho</button>
+            </article>
+                 
+            <!-- Produto 2 -->
+            <article class="produto">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxJAm5-D3dYR90y5wDbhCZAysDrYkgwsB_Azzjz4Yq3uk2m4ivcoj6aABV&s=10" alt="Frasco elegante de perfume">
+                <h3>Perfume do Whatsapp</h3>
+                <p class="descricao">Fragrância clássica para a sua vó.</p>
+                <p class="preco">R$ 1.000,00</p>
+                <button type="button">Adicionar ao carrinho</button>
+            </article>
+            
+            <!-- Produto 3 -->
+            <article class="produto">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzf5u88hW3_0FOCiLuY2VaoRJ-Df66FN7C3AS8u7no7Q&s=10" alt="Frasco elegante de perfume">
+                <h3>Perfume do Windows</h3>
+                <p class="descricao">Fragrância marcante para o seu pai.</p>
+                <p class="preco">R$ 1.000,00</p>
+                <button type="button">Adicionar ao carrinho</button>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer id="contato">
+        <h2>Entre em contato</h2>
+        <p>E-mail: atendimento@exemplo.com</p>
+        <p>&copy; 2026 Lojas Americanas - Projeto demonstrativo.</p>
+    </footer>
+
+</body>
+</html>

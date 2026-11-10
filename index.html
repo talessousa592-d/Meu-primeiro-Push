@@ -1,15 +1,423 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>meu primeiro push</title>
+    <title>Lojas Americanas - Início</title>
+    <style>
+        /* ==========================================
+           CONFIGURAÇÕES GERAIS E RESET CSS
+           ========================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* ==========================================
+           CABEÇALHO
+           ========================================== */
+        header {
+            background-color: #e60014;
+            color: #ffffff;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 16px;
+        }
+
+        /* ==========================================
+           LAYOUT PRINCIPAL (GRADE: SIDEBAR + CONTEÚDO)
+           ========================================== */
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .loja-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* ==========================================
+           ESTILO DOS DROPDOWNS LATERAIS (<details>)
+           ========================================== */
+        .menu-lateral, .banner-comercial-wrapper {
+            background-color: #fff9f9;
+            border: 1px solid #ffcccc;
+            border-left: 5px solid #e60014;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .menu-lateral details, .banner-comercial-wrapper details {
+            width: 100%;
+        }
+
+        .menu-lateral summary, .banner-comercial-wrapper summary {
+            color: #e60014;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2px;
+        }
+
+        .menu-lateral details[open] summary, 
+        .banner-comercial-wrapper details[open] summary {
+            border-bottom: 1px solid #ffcccc;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+        }
+
+        /* Remove a seta padrão do navegador */
+        .menu-lateral summary::-webkit-details-marker,
+        .banner-comercial-wrapper summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* Seta personalizada que gira ao abrir */
+        .menu-lateral summary::after,
+        .banner-comercial-wrapper summary::after {
+            content: '▼';
+            font-size: 0.75rem;
+            transition: transform 0.2s ease;
+        }
+
+        .menu-lateral details[open] summary::after,
+        .banner-comercial-wrapper details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        /* Links internos do menu de navegação */
+        .menu-lateral ul {
+            list-style: none;
+            padding-top: 5px;
+        }
+
+        .menu-lateral ul li {
+            margin-bottom: 6px;
+        }
+
+        .menu-lateral ul li a {
+            color: #444444;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            padding: 5px 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .menu-lateral ul li a:hover {
+            color: #e60014;
+            background-color: #ffe6e6;
+        }
+
+        /* ==========================================
+           ÁREA DE ANÚNCIOS COMERCIAIS COM BOTÃO X
+           ========================================== */
+        .banner-comercial {
+            position: relative;
+            background-color: #f8f9fa;
+            border: 1px dashed #cccccc;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+            margin-top: 5px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .banner-comercial-wrapper.fechado {
+            opacity: 0;
+            transform: scale(0.9);
+            display: none;
+        }
+
+        .btn-fechar {
+            position: absolute;
+            top: 4px;
+            right: 6px;
+            background: #e60014;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            line-height: 20px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .btn-fechar:hover {
+            background-color: #b80010;
+            transform: scale(1.1);
+        }
+
+        .banner-comercial .tag-anuncio {
+            display: block;
+            font-size: 9px;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .banner-comercial img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+            margin: 0 auto 6px auto;
+        }
+
+        .banner-comercial a.btn-comercial {
+            display: inline-block;
+            background-color: #333333;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .banner-comercial a.btn-comercial:hover {
+            background-color: #e60014;
+        }
+
+        /* ==========================================
+           CONTEÚDO PRINCIPAL (BOAS-VINDAS)
+           ========================================== */
+        .conteudo-principal {
+            background-color: #fff0f0;
+            border: 1px solid #ffcccc;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .conteudo-principal h2 {
+            color: #e60014;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .conteudo-principal p {
+            font-size: 16px;
+            color: #555555;
+        }
+
+        /* ==========================================
+           RODAPÉ
+           ========================================== */
+        footer {
+            background-color: #e60014;
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        /* ==========================================
+           RESPONSIVIDADE (CELULARES E TABLETS)
+           ========================================== */
+        @media (max-width: 850px) {
+            .loja-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1><a href="contatos.html">Contatos</a></h1>
-    <h1><a href="sobre.html">Sobre</a></h1>
-    <h1><a href="portfolio.html">Portfolio</a></h1>
-    <h1><a href="produtos.html">Produtos</a></h1>
-    <h1><a href="tabela.html">Tabela</a></h1>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Lojas Americanas</h1>
+        <p>Seu portal de navegação online!</p>
+    </header>
+
+    <!-- Conteúdo principal da página -->
+    <main>
+        <div class="loja-layout">
+            
+            <!-- Barra Lateral com Menus Dropdown e os 7 Comerciais -->
+            <aside>
+                <!-- Dropdown de Navegação Principal -->
+                <div class="menu-lateral">
+                    <details open>
+                        <summary>Navegação</summary>
+                        <ul>
+                            <li><a href="contatos.html">Contatos</a></li>
+                            <li><a href="sobre.html">Sobre</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                            <li><a href="produtos.html">Produtos</a></li>
+                            <li><a href="tabela.html">Tabela</a></li>
+                        </ul>
+                    </details>
+                </div>
+
+                <!-- Comercial 1: Black Friday -->
+                <div class="banner-comercial-wrapper" id="anuncio-1">
+                    <details>
+                        <summary>1. Black Friday</summary>
+                        <div class="banner-comercial">
+                            <button type="button" class="btn-fechar" onclick="fecharAnuncio('anuncio-1')" aria-label="Fechar">&times;</button>
+                            <span class="tag-anuncio">Oferta Especial</span>
+                            <a href="#" target="_blank" rel="noopener">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimylp5ox_VTwGN9DVYj_D8L6D_c8aQMvHrKektoxPPGr9tR8GpIjw-SXNNAf4pagQGIo6GMVSkW7s9H7qsvzSsYl1CC1GkeWslO7RT3AKrpB8UnT3VQ7NZodGSlOXoALhf4BD-Cm8bKbGK/s1600/red-hot-chili-peppers-com-john-frusciante.jpg" alt="Black Friday">
+                            </a>
+                            <a href="#" class="btn-comercial">Conferir</a>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Comercial 2: Cartão Fidelidade -->
+                <div class="banner-comercial-wrapper" id="anuncio-2">
+                    <details>
+                        <summary>2. Cartão da Loja</summary>
+                        <div class="banner-comercial">
+                            <button type="button" class="btn-fechar" onclick="fecharAnuncio('anuncio-2')" aria-label="Fechar">&times;</button>
+                            <span class="tag-anuncio">Patrocinado</span>
+                            <a href="#" target="_blank" rel="noopener">
+                                <img src="https://upload.wikimedia.org/wikipedia/pt/7/75/Mamonas-assassinas.jpg?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original" alt="Cartão Fidelidade">
+                            </a>
+                            <a href="#" class="btn-comercial">Peça Já</a>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Comercial 3: Tecnologia -->
+                <div class="banner-comercial-wrapper" id="anuncio-3">
+                    <details>
+                        <summary>3. Tecnologia</summary>
+                        <div class="banner-comercial">
+                            <button type="button" class="btn-fechar" onclick="fecharAnuncio('anuncio-3')" aria-label="Fechar">&times;</button>
+                            <span class="tag-anuncio">Gadgets</span>
+                            <a href="#" target="_blank" rel="noopener">
+                                <img src="https://yt3.googleusercontent.com/ytc/AIdro_kVg_SVwjTzp8F6GzVigFtZFtS79T1IjCE4dcluefq5mQ=s900-c-k-c0x00ffffff-no-rj" alt="Tecnologia">
+                            </a>
+                            <a href="#" class="btn-comercial">Ver Mais</a>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Comercial 4: Moda -->
+                <div class="banner-comercial-wrapper" id="anuncio-4">
+                    <details>
+                        <summary>4. Moda e Estilo</summary>
+                        <div class="banner-comercial">
+                            <button type="button" class="btn-fechar" onclick="fecharAnuncio('anuncio-4')" aria-label="Fechar">&times;</button>
+                            <span class="tag-anuncio">Tendência</span>
+                            <a href="#" target="_blank" rel="noopener">
+                                <img src="https://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2023/07/10-musicas-charlie-brown-jr.jpg" alt="Moda">
+                            </a>
+                            <a href="#" class="btn-comercial">Explorar</a>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Comercial 5: Cuidados Pessoais -->
+                <div class="banner-comercial-wrapper" id="anuncio-5">
+                    <details>
+                        <summary>5. Beleza e Cuidado</summary>
+                        <div class="banner-comercial">
+                            <button type="button" class="btn-fechar" onclick="fecharAnuncio('anuncio-5')" aria-label="Fechar">&times;</button>
+                            <span class="tag-anuncio">Bem-estar</span>
+                            <a href="#" target="_blank" rel="noopener">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjjT_P9IEIZDLgpoJDCTb0BnCC3W_QlaWtmqRDNY9wopOJ9aXFEWvDxVpqzYR4SvSI3A_0u4v1dMfmKY9BwYh1S79uhkf8PszLBMFlr_DDLTXGJAOH0W6DtLNNdD-0Ejd8uTRHPLg/s1600/Font.jpg" alt="Cuidados Pessoais">
+                            </a>
+                            <a href="#" class="btn-comercial">Comprar</a>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Comercial 6: Casa Inteligente -->
+                <div class="banner-comercial-wrapper" id="anuncio-6">
+                    <details>
+                        <summary>6. Casa e Decoração</summary>
+                        <div class="banner-comercial">
+                            <button type="button" class="btn-fechar" onclick="fecharAnuncio('anuncio-6')" aria-label="Fechar">&times;</button>
+                            <span class="tag-anuncio">Utilidades</span>
+                            <a href="#" target="_blank" rel="noopener">
+                                <img src="https://siteofadown.com/noticias/wp-content/uploads/2021/07/SOAD2001-800x622.jpg" alt="Casa Inteligente">
+                            </a>
+                            <a href="#" class="btn-comercial">Renovar</a>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Comercial 7: Frete Grátis -->
+                <div class="banner-comercial-wrapper" id="anuncio-7">
+                    <details>
+                        <summary>7. Frete Grátis</summary>
+                        <div class="banner-comercial">
+                            <button type="button" class="btn-fechar" onclick="fecharAnuncio('anuncio-7')" aria-label="Fechar">&times;</button>
+                            <span class="tag-anuncio">Logística</span>
+                            <a href="#" target="_blank" rel="noopener">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Skank_Divulgacao.jpg?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original" alt="Frete Grátis">
+                            </a>
+                            <a href="#" class="btn-comercial">Saiba Mais</a>
+                        </div>
+                    </details>
+                </div>
+            </aside>
+
+            <!-- Seção de Boas-Vindas à direita -->
+            <section class="conteudo-principal">
+                <h2>Bem-vindo ao Meu Primeiro Push!</h2>
+                <p>Utilize o menu ao lado para navegar entre as páginas e explorar nossos comerciais interativos.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Lojas Americanas - Projeto de Aprendizado.</p>
+    </footer>
+
+    <!-- Script para fechar os comerciais com o botão X -->
+    <script>
+        function fecharAnuncio(idElemento) {
+            const elemento = document.getElementById(idElemento);
+            if (elemento) {
+                elemento.classList.add('fechado');
+            }
+        }
+    </script>
+
 </body>
 </html>

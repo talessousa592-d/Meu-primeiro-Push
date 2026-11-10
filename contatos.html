@@ -2,124 +2,397 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato - Lojas Americanas</title>
+
+    <style>
+        /* Estilos gerais */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border: 2px solid #cc0017;
+            border-radius: 12px;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #cc0017;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+
+        .introducao {
+            margin-bottom: 0;
+        }
+
+        /* Títulos das seções */
+        h2 {
+            color: #cc0017;
+            border-bottom: 2px solid #cc0017;
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #dddddd;
+            margin: 25px 0;
+        }
+
+        /* Links */
+        a {
+            color: #b00015;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #7d0010;
+            text-decoration-thickness: 2px;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid #1769aa;
+            outline-offset: 3px;
+        }
+
+        /* Canais de atendimento */
+        address {
+            font-style: normal;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff5f5;
+            margin-bottom: 10px;
+            padding: 12px 15px;
+            border-left: 4px solid #cc0017;
+            border-radius: 4px;
+            overflow-wrap: anywhere;
+        }
+
+        /* Tabela de setores */
+        .tabela-responsiva {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        th {
+            background-color: #cc0017;
+            color: #ffffff;
+            padding: 12px;
+            text-align: center;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #dddddd;
+            text-align: center;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #fff5f5;
+        }
+
+        img {
+            max-width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        /* Estilos para os Asides */
+        aside {
+            background-color: #fff9f9;
+            border: 1px solid #ffcccc;
+            border-left: 5px solid #cc0017;
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 6px;
+        }
+
+        aside h3 {
+            color: #cc0017;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        aside p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Formulário */
+        form p {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .obrigatorio {
+            font-size: 0.9em;
+            font-weight: normal;
+        }
+
+        input,
+        select,
+        textarea {
+            display: block;
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #777777;
+            border-radius: 6px;
+            font: inherit;
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        /* Botões */
+        button,
+        .botao-voltar {
+            display: inline-block;
+            background-color: #cc0017;
+            color: #ffffff;
+            border: 2px solid #cc0017;
+            padding: 10px 20px;
+            font: inherit;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        button:hover,
+        .botao-voltar:hover {
+            background-color: #a00012;
+            border-color: #a00012;
+            color: #ffffff;
+        }
+
+        button[type="reset"] {
+            background-color: #ffffff;
+            color: #cc0017;
+            border-color: #cc0017;
+        }
+
+        button[type="reset"]:hover {
+            background-color: #fff0f0;
+            color: #a00012;
+        }
+
+        /* Rodapé */
+        footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #dddddd;
+            text-align: center;
+        }
+
+        /* Layout para celulares */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            header {
+                padding: 15px;
+            }
+
+            .tabela-responsiva table {
+                min-width: 550px;
+            }
+
+            button,
+            .botao-voltar {
+                margin-bottom: 8px;
+            }
+        }
+    </style>
 </head>
+
 <body>
+    <div class="container">
 
-    <!-- Cabeçalho Principal -->
-    <h1>Fale Conosco - Lojas Americanas</h1>
-    <p>Entre em contato com a nossa equipe através dos canais abaixo.</p>
+        <header>
+            <h1>Fale Conosco - Lojas Americanas</h1>
 
-    <hr>
+            <p class="introducao">
+                Entre em contato com nossa equipe pelos canais
+                de atendimento ou envie sua mensagem pelo formulário.
+            </p>
+        </header>
 
-    <!-- Seção de Canais de Atendimento -->
-    <h2>Nossos Canais</h2>
-    
-    <address>
-        <ul>
-            <li><strong>Telefone:</strong> <a href="tel:+558598187-1807">(85) 98187-1807</a></li>
-            <li><strong>E-mail:</strong> <a href="mailto:contato@americanas.com">contato@americanas.com</a></li>
-            <li><strong>Endereço:</strong> Av. Francisco Sá, 1030 - Centro, Fortaleza - CE</li>
-            <li><strong>Horário de Funcionamento:</strong> Segunda a Sexta, das 08h às 18h</li>
-        </ul>
-    </address>
+        <main>
+            <section aria-labelledby="titulo-canais">
+                <h2 id="titulo-canais">Nossos Canais</h2>
 
-    <hr>
+                <address>
+                    <ul>
+                        <li>
+                            <strong>Telefone:</strong>
+                            <a href="tel:+5585981871807">
+                                (85) 98187-1807
+                            </a>
+                        </li>
 
-    <!-- Contatos por Setor usando Tabela -->
-    <h2>Atendimento por Setor</h2>
+                        <li>
+                            <strong>E-mail:</strong>
+                            <a href="mailto:contato@americanas.com">
+                                contato@americanas.com
+                            </a>
+                        </li>
 
-  <table border="1" cellpadding="5" cellspacing="0">
-    <thead>
-        <tr>
-            <th>Setor</th>
-            <th>E-mail</th>
-            <th>Ramal</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="text-align: center;">
-                <img src="americanas.png" alt="Suporte Técnico" width="80" height="80"><br>
-                Suporte Técnico
-            </td>
-            <td style="text-align: center;">
-                
-                <a href="mailto:suporte@americanas.com">suporte@americanas.com</a>
-            </td>
-            <td style="text-align: center;">
-                101
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">
-                <img src="bolsa.png" alt="Vendas / Comercial" width="80" height="80"><br>
-                Vendas / Comercial
-            </td>
-            <td style="text-align: center;">
-                
-                <a href="mailto:vendas@americanas.com">vendas@americanas.com</a>
-            </td>
-            <td style="text-align: center;">
-                102
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: center;">
-                <img src="dolar.png" alt="Financeiro" width="80" height="80"><br>
-                Financeiro
-            </td>
-            <td style="text-align: center;">
-             
-                <a href="mailto:financeiro@americanas.com">financeiro@americanas.com</a>
-            </td>
-            <td style="text-align: center;">
-                
-                103
-            </td>
-        </tr>
-    </tbody>
-</table>
+                        <li>
+                            <strong>Endereço:</strong>
+                            Av. Francisco Sá, 1030 - Centro,
+                            Fortaleza - CE
+                        </li>
 
-<hr>
+                        <li>
+                            <strong>Horário de funcionamento:</strong>
+                            Segunda a sexta, das 08h às 18h.
+                        </li>
+                    </ul>
+                </address>
+            </section>
 
-    <!-- Formulário de Mensagem -->
-    <h2>Envie uma Resenha</h2>
+            <!-- Aside informativo adicionado -->
+            <aside>
+                <h3>Dica de Atendimento</h3>
+                <p>Para agilizar o seu suporte técnico ou comercial, tenha em mãos o número do seu pedido ou CPF antes de ligar ou enviar um e-mail.</p>
+            </aside>
 
-    <form action="/enviar-contato" method="post">
-        <p>
-            <label for="nome">Nome completo:</label><br>
-            <input type="text" id="nome" name="nome" required>
-        </p>
+            <hr>
 
-        <p>
-            <label for="email">E-mail:</label><br>
-            <input type="email" id="email" name="email" required>
-        </p>
+            <section aria-labelledby="titulo-setores">
+                <h2 id="titulo-setores">Atendimento por Setor</h2>
 
-        <p>
-            <label for="assunto">Assunto:</label><br>
-            <select id="assunto" name="assunto">
-                <option value="duvida">Dúvidas</option>
-                <option value="orcamento">Orçamento</option>
-                <option value="suporte">Suporte</option>
-                <option value="outro">Outro</option>
-            </select>
-        </p>
+                <div class="tabela-responsiva"
+                     role="region"
+                     aria-label="Tabela de contatos dos setores"
+                     tabindex="0">
 
-</p>
+                    <table>
+                        <caption>
+                            E-mails e ramais dos setores de atendimento
+                        </caption>
 
-<p>
-    <label for="resenha">Faça sua resenha:</label><br>
-    <textarea id="resenha" name="resenha" rows="5" cols="40"></textarea>
-</p>
+                        <thead>
+                            <tr>
+                                <th scope="col">Setor</th>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">Ramal</th>
+                            </tr>
+                        </thead>
 
-<p>
-    <button type="submit">Enviar Resenha</button>
-    <button type="reset">Limpar Resenha</button>
-</p>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="americanas.png"
+                                         alt=""
+                                         width="60"
+                                         height="60">
+                                    <br>
+                                    Suporte Técnico
+                                </td>
 
-<p>
-    <button><a href="index.html">voltar</a></button>
+                                <td>
+                                    <a href="mailto:suporte@americanas.com">
+                                        suporte@americanas.com
+                                    </a>
+                                </td>
+
+                                <td>101</td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <img src="bolsa.png"
+                                         alt=""
+                                         width="60"
+                                         height="60">
+                                    <br>
+                                    Vendas / Comercial
+                                </td>
+
+                                <td>
+                                    <a href="mailto:vendas@americanas.com">
+                                        vendas@americanas.com
+                                    </a>
+                                </td>
+
+                                <td>102</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Outro aside adicionado para avisos -->
+            <aside>
+                <h3>Aviso Importante</h3>
+                <p>Nossos atendentes nunca solicitam senhas, códigos de confirmação por SMS ou dados de cartão de crédito por telefone.</p>
+            </aside>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Lojas Americanas - Todos os direitos reservados.</p>
+        </footer>
+
+    </div>
 </body>
 </html>

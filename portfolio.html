@@ -1,116 +1,445 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio de Projetos - Nome da Empresa</title>
-</head>
+    <title>Portfólio Institucional - Lojas Americanas</title>
+    <style>
+        /* --- Configurações Globais --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f9f9f9;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Cabeçalho e Navegação --- */
+        header {
+            background-color: #ffffff;
+            border-bottom: 3px solid #cc0017;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #cc0017;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: bold;
+            color: #555555;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #cc0017;
+        }
+
+        /* --- Seção Hero (Apresentação) --- */
+        .hero {
+            background: linear-gradient(135deg, #cc0017 0%, #990011 100%);
+            color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #ffe6e6;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #cc0017;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: bold;
+            border: 2px solid #ffffff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #fff0f0;
+            color: #990011;
+        }
+
+        /* --- Layout Principal com Grid (Conteúdo + Asides) --- */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2.section-title {
+            font-size: 26px;
+            color: #cc0017;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #cc0017;
+            padding-bottom: 8px;
+        }
+
+        /* --- Cartões de Pilares/Projetos --- */
+        .pilares-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .pilar-card {
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #dddddd;
+            padding: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .pilar-card:hover {
+            transform: translateY(-4px);
+            border-color: #cc0017;
+        }
+
+        .pilar-card h3 {
+            font-size: 18px;
+            color: #333333;
+            margin-bottom: 10px;
+        }
+
+        .pilar-card p {
+            color: #666666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #fff0f0;
+            color: #cc0017;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* --- Sobre Nós --- */
+        .sobre-caixa {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #dddddd;
+            color: #444444;
+        }
+
+        .sobre-caixa p {
+            margin-bottom: 15px;
+        }
+
+        /* --- Barra Lateral com Asides --- */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar-widget {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #dddddd;
+            border-left: 5px solid #cc0017;
+        }
+
+        .sidebar-widget h3 {
+            font-size: 18px;
+            color: #cc0017;
+            margin-bottom: 15px;
+        }
+
+        .sidebar-widget ul {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            color: #555555;
+            font-size: 14px;
+        }
+
+        /* Estilização dos links dentro das asides */
+        .sidebar-widget a {
+            display: block;
+            color: #444444;
+            font-weight: bold;
+            padding: 6px 10px;
+            border-radius: 4px;
+            background-color: #fff9f9;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-widget a:hover {
+            color: #cc0017;
+            background-color: #fff0f0;
+            border-left-color: #cc0017;
+            padding-left: 14px;
+        }
+
+        /* --- Formulário de Contato --- */
+        .contato-form {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #dddddd;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #333333;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #777777;
+            border-radius: 6px;
+            font: inherit;
+            background-color: #ffffff;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #cc0017;
+            box-shadow: 0 0 0 3px rgba(204, 0, 23, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        .form-btn {
+            background-color: #cc0017;
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-btn:hover {
+            background-color: #990011;
+        }
+
+        /* --- Rodapé --- */
+        footer {
+            background-color: #cc0017;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        /* --- Acessibilidade Focus --- */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid #1769aa;
+            outline-offset: 3px;
+        }
+    </style>
+</head>
 <body>
 
     <!-- Cabeçalho -->
     <header>
-        <h1>Nosso Portfólio de Projetos</h1>
-        <p>Conheça os principais projetos desenvolvidos pela nossa equipe.</p>
-
-        <!-- Menu de navegação -->
-        <nav>
-            <h2>Filtrar por área</h2>
-
-            <ul>
-                <li>
-                    <a href="#desenvolvimento-web">Desenvolvimento Web</a>
-                </li>
-
-                <li>
-                    <a href="#aplicativos-moveis">Aplicativos Móveis</a>
-                </li>
-
-                <li>
-                    <a href="#depoimentos">Depoimentos de Clientes</a>
-                </li>
-            </ul>
-        </nav>
+        <div class="nav-container">
+            <div class="logo">Lojas Americanas</div>
+            <nav class="nav-links" aria-label="Menu principal">
+                <a href="#sobre">Sobre</a>
+                <a href="#pilares">Pilares</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
     </header>
 
-    <hr>
+    <!-- Seção Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Portfólio Institucional & Inovação</h1>
+            <p>Há décadas conectando milhões de brasileiros aos melhores produtos, ofertas e experiências de varejo do país.</p>
+            <a href="#pilares" class="btn">Explorar Pilares e Projetos</a>
+        </div>
+    </section>
 
-    <!-- Conteúdo principal -->
-    <main>
+    <!-- Layout Principal e Sidebar -->
+    <div class="main-container">
+        
+        <!-- Coluna Esquerda (Conteúdo Principal) -->
+        <main>
+            <!-- Seção Sobre -->
+            <section id="sobre">
+                <h2 class="section-title">Nossa Trajetória</h2>
+                <div class="sobre-caixa">
+                    <p>As <strong>Lojas Americanas</strong> representam uma das marcas mais tradicionais e queridas do varejo nacional. Com presença física e digital robusta, nosso compromisso contínuo é democratizar o acesso ao consumo com eficiência, agilidade e preços acessíveis.</p>
+                    <p>Este portfólio destaca nossas principais frentes de atuação tecnológica, logística de ponta e iniciativas estratégicas voltadas para a experiência omnichannel do cliente.</p>
+                </div>
+            </section>
 
-        <!-- Desenvolvimento Web -->
-        <section id="desenvolvimento-web">
+            <!-- Seção Pilares / Projetos -->
+            <section id="pilares">
+                <h2 class="section-title">Pilares e Projetos Estratégicos</h2>
+                <div class="pilares-grid">
+                    
+                    <article class="pilar-card">
+                        <h3>Plataforma Digital & App</h3>
+                        <p>Ecossistema de e-commerce de alta performance integrado a milhares de sellers parceiros e clientes em todo o Brasil.</p>
+                        <span class="tag">Omnichannel</span>
+                    </article>
 
-            <h2>Desenvolvimento Web</h2>
+                    <article class="pilar-card">
+                        <h3>Logística Inteligente</h3>
+                        <p>Rede avançada de centros de distribuição otimizados para garantir agilidade e eficiência nas entregas de ponta a ponta.</p>
+                        <span class="tag">Supply Chain</span>
+                    </article>
 
-            <!-- Projeto 1 -->
-            <article>
+                    <article class="pilar-card">
+                        <h3>Soluções Financeiras</h3>
+                        <p>Ferramentas de crédito facilitado e meios de pagamento integrados para impulsionar o poder de compra.</p>
+                        <span class="tag">Fintech</span>
+                    </article>
 
-                <header>
-                    <h3>Redesign da Plataforma E-commerce - Loja Exemplo</h3>
-                </header>
+                </div>
+            </section>
 
-                <figure>
-                    <img 
-                        src="https://via.placeholder.com/400x200" 
-                        alt="Captura de tela da nova loja virtual">
-                    <figcaption>Nova plataforma da Loja Exemplo</figcaption>
-                </figure>
+            <!-- Seção Contato -->
+            <section id="contato">
+                <h2 class="section-title">Canal de Parcerias e Imprensa</h2>
+                <form class="contato-form">
+                    <div class="form-group">
+                        <label for="nome">Nome / Empresa</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome ou da instituição">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail Corporativo</label>
+                        <input type="email" id="email" name="email" required placeholder="contato@empresa.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem / Proposta</label>
+                        <textarea id="mensagem" name="mensagem" required placeholder="Descreva o assunto da parceria ou consulta..."></textarea>
+                    </div>
+                    <button type="submit" class="form-btn">Enviar Mensagem</button>
+                </form>
+            </section>
+        </main>
 
-                <p><strong>Cliente:</strong> Loja Exemplo</p>
-
-                <p><strong>Ano:</strong> 2025</p>
-
-                <p>
-                    <strong>Desafio:</strong>
-                    A plataforma anterior apresentava lentidão e baixa taxa
-                    de conversão no checkout.
-                </p>
-
-                <p>
-                    <strong>Solução:</strong>
-                    Reestruturação completa da arquitetura do site,
-                    otimização da base de dados e integração com novos
-                    gateways de pagamento.
-                </p>
-
-                <h4>Tecnologias utilizadas</h4>
-
+        <!-- Coluna Direita (Barra Lateral com Asides atualizadas) -->
+        <aside>
+            <!-- Primeira Aside: Navegação Rápida -->
+            <div class="sidebar-widget">
+                <h3>Navegação Rápida</h3>
                 <ul>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>Node.js</li>
-                    <li>Express</li>
-                    <li>PostgreSQL</li>
+                    <li><a href="#sobre">Sobre a Empresa</a></li>
+                    <li><a href="#pilares">Pilares Estratégicos</a></li>
+                    <li><a href="#contato">Contato e Parcerias</a></li>
                 </ul>
+            </div>
 
-                <p>
-                    <strong>Resultado:</strong>
-                    Aumento de 35% nas vendas nos primeiros três meses.
-                </p>
+            <!-- Segunda Aside: Informações & Impacto -->
+            <div class="sidebar-widget">
+                <h3>Indicadores de Impacto</h3>
+                <ul>
+                    <li>Presença em centenas de cidades brasileiras.</li>
+                    <li>Milhões de acessos mensais nas plataformas digitais.</li>
+                    <li>Milhares de empregos diretos e indiretos gerados.</li>
+                </ul>
+            </div>
+        </aside>
 
-                <p>
-                    <a href="https://example.com" target="_blank">
-                        Visitar o site do projeto
-                    </a>
-                </p>
+    </div>
 
-            </article>
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Lojas Americanas - Todos os direitos reservados.</p>
+        <p>Inovação, Tradição e Confiança no Varejo Brasileiro.</p>
+    </footer>
 
-            <hr>
-
-            <!-- Projeto 2 -->
-            <article>
-
-                <header>
-                    <h3>Portal de Notícias Corporativo</h3>
-                </header>
-
-                <figure>
-                    <img 
-                        src="https://via.placeholder.com/400x200"
-                        alt="Captura de tela do portal de notícias corporativo">
-                    <figcaption>Portal
-```
+</body>
+</html>
